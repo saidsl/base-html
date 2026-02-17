@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <nav>
+    <small>&copy; 2026 Base HTML</small>
+    <ul class="menu-horizontal">
+      <li v-for="item in footer" :key="item.id">
+        <a :href="item.href"><small>{{item.title}}</small></a>
+      </li>
+    </ul>
+  </nav>
+</footer>

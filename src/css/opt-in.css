@@ -1,0 +1,207 @@
+/* Menu (opt-in) */
+.menu,
+.menu-horizontal {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2);
+  background: var(--bg);
+  overflow: visible;
+  position: relative;
+  display: block;
+}
+
+.menu li,
+.menu-horizontal li {
+  position: relative;
+}
+
+.menu a,
+.menu-horizontal a {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  padding-right: 2rem;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  line-height: 1.2;
+  position: relative;
+}
+
+.menu a:hover,
+.menu a:focus-visible,
+.menu-horizontal a:hover,
+.menu-horizontal a:focus-visible {
+  background: var(--surface);
+  color: var(--accent);
+}
+
+/* Submenu indicators + active trail */
+.menu li:has(> ul) > a::after,
+.menu-horizontal li:has(> ul) > a::after {
+  content: "▸";
+  font-size: 1.1em;
+  line-height: 1;
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+}
+
+.menu-horizontal > li:has(> ul) > a::after {
+  content: "▾";
+}
+
+.menu li:has(> ul):hover > a,
+.menu li:has(> ul):focus-within > a,
+.menu-horizontal li:has(> ul):hover > a,
+.menu-horizontal li:has(> ul):focus-within > a {
+  background: var(--menu-active);
+  color: var(--menu-active-text);
+}
+
+.menu li:has(> ul):hover > a::after,
+.menu li:has(> ul):focus-within > a::after,
+.menu-horizontal li:has(> ul):hover > a::after,
+.menu-horizontal li:has(> ul):focus-within > a::after {
+  color: var(--menu-active-text);
+}
+
+.menu ul,
+.menu-horizontal ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  inset: 0 auto auto 100%;
+  min-width: 14rem;
+  display: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2);
+  background: var(--bg);
+  box-shadow: var(--shadow-1);
+  line-height: 1.2;
+}
+
+.menu li:hover > ul,
+.menu li:focus-within > ul,
+.menu-horizontal li:hover > ul,
+.menu-horizontal li:focus-within > ul {
+  display: block;
+}
+
+.menu li:hover {
+  background-color: var(--surface);
+
+}
+
+/* Horizontal menu (opt-in) */
+.menu-horizontal {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.menu-horizontal > li {
+  flex: 0 0 auto;
+  line-height: 1.2;
+}
+
+.menu-horizontal > li > a {
+  display: flex;
+  align-items: center;
+  min-height: 2.4rem;
+  line-height: 1.2;
+  border-bottom: 0;
+  border-right: 1px solid var(--border);
+}
+
+.menu-horizontal > li:last-child > a {
+  border-right: 0;
+}
+
+.menu-horizontal > li > ul {
+  inset: 100% auto auto 0;
+}
+
+.menu-horizontal ul ul {
+  inset: 0 auto auto 100%;
+}
+
+/* Vertical menu width */
+.menu {
+  width: 14rem;
+}
+
+/* Opt-in extras */
+.auto-number {
+  counter-reset: h2 0 h3 0 tab 0 fig 0 lst 0;
+}
+
+.auto-number figure figcaption::before {
+  color: var(--accent);
+  counter-increment: fig;
+  content: "Figure " counter(fig) ": ";
+}
+
+.auto-number figure pre + figcaption::before {
+  counter-increment: lst;
+  content: "Listing " counter(lst) ": ";
+}
+
+.auto-number table caption::before,
+.auto-number figure > table + figcaption::before {
+  color: var(--accent);
+  counter-increment: tab;
+  content: "Table " counter(tab) ": ";
+}
+
+.auto-number h2::before,
+.auto-number h3::before {
+  display: inline-block;
+  font-size: 0.7em;
+  margin-right: 0.5em;
+  color: var(--muted);
+}
+
+.auto-number h2::before {
+  counter-increment: h2;
+  counter-reset: h3;
+  content: counter(h2) ".";
+}
+
+.auto-number h3::before {
+  counter-increment: h3;
+  content: counter(h2) "." counter(h3) ".";
+}
+
+.lettrine::first-letter {
+  float: left;
+  font-size: 3.2em;
+  line-height: 0.85;
+  padding-right: 0.2em;
+  color: var(--accent);
+}
+
+.with-ornaments section::after {
+  display: block;
+  margin: var(--space-5) 0;
+  color: var(--border);
+  text-align: center;
+  font-size: 1.2rem;
+  content: "• • •";
+}
+
+.aside-float {
+  position: absolute;
+  right: -10rem;
+  width: 9rem;
+  font-size: var(--text-sm);
+  color: var(--muted);
+}

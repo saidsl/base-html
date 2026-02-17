@@ -1,0 +1,9 @@
+<header class="site-header">
+  <nav aria-label="Primary" class="menu-horizontal menu-minimal">
+    
+      <a v-for="item in nav" :key="item.id">
+        <a :href="item.href">{{item.title}}</a>
+      </a>
+   
+  </nav>
+</header>

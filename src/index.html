@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Base HTML</title>
+  <link rel="stylesheet" href="./css/core-classless.css" />
+  
+</head>
+
+<body>
+  <main id="app">
+    <site-header></site-header>
+    <div class="grid">
+      <div class="col-3">
+        <site-aside></site-aside>
+      </div>
+      <div class="col-9">
+        <h1>{{message}}</h1>
+
+        <div class="grid">
+          <article v-for="i in 6" class="col-3">
+            <header>Card Heading</header>
+            <p>This is the card body.</p>
+            <footer>Card Footer</footer>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <site-footer></site-footer>
+  </main>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>

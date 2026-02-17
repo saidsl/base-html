@@ -1,0 +1,17 @@
+{
+  "name": "base-html",
+  "version": "1.0.0",
+  "description": "Base template for website using VueJS",
+  "main": "index.html",
+  "keywords": ["html", "css", "template"],
+  "author": "Said Salameh",
+  "license": "MIT",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "npm run build"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}

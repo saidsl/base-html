@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Section One",
+    "href": "#one",
+    "alt": "Homepage"
+  },
+  {
+    "id": 2,
+    "title": "Section Two",
+    "href": "#two",
+    "alt": "About Page"
+  },
+  {
+    "id": 3,
+    "title": "Section Three",
+    "href": "#three",
+    "alt": "Services/Products Page"
+  },
+  {
+    "id": 4,
+    "title": "Section Four",
+    "href": "#four",
+    "alt": "eu"
+  }
+]

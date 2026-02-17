@@ -1,0 +1,174 @@
+<!--
+WBN Hero Visual (SVG)
+- Simplified Indonesia silhouette (stylised)
+- Hex/grid backbone overlay
+- Highlighted backbone nodes + access nodes
+- Minimal labels: Backbone Node, Redundant Path, Access Layer
+- Designed to sit on your hero gradient (blue background)
+- Edit colors quickly via the CSS variables in <style>
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="Indonesia coverage map with grid/hex backbone topology overlay">
+  <defs>
+    <!-- Soft glow for nodes -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 0.7 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle diagonal pattern for map fill -->
+    <pattern id="diag" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(20)">
+      <rect width="10" height="10" fill="transparent"/>
+      <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(255,255,255,0.10)" stroke-width="2"/>
+    </pattern>
+
+    <!-- Clip the grid overlay to the map silhouette -->
+    <clipPath id="clipMap">
+      <!-- Stylised silhouette path (not geographically perfect; designed for schematic) -->
+      <path id="mapSilhouette" d="
+        M170,290
+        C220,265 260,255 300,260
+        C340,266 365,272 398,266
+        C440,258 470,245 515,244
+        C560,244 590,260 620,270
+        C655,282 690,290 720,286
+        C760,281 792,266 828,258
+        C870,249 905,255 935,270
+        C965,285 1000,300 1040,305
+        C1085,310 1108,330 1116,345
+        C1125,365 1115,388 1090,404
+        C1060,423 1020,418 985,406
+        C950,394 915,386 885,392
+        C850,398 820,418 785,432
+        C748,447 705,454 660,442
+        C625,432 600,416 565,404
+        C525,391 490,392 450,402
+        C410,412 372,420 330,412
+        C285,404 250,386 220,366
+        C185,343 160,320 170,290
+        Z
+      "/>
+    </clipPath>
+  </defs>
+
+  <style>
+    /* Quick brand knobs (match your site variables if you like) */
+    :root{
+      --line: rgba(255,255,255,0.22);
+      --line-strong: rgba(255,255,255,0.40);
+      --map-stroke: rgba(255,255,255,0.30);
+      --map-fill: rgba(255,255,255,0.06);
+      --node: rgba(255,255,255,0.92);
+      --node-core: rgba(255,255,255,0.98);
+      --node-accent: rgba(94,167,239,0.95); /* #5EA7EF */
+      --node-teal: rgba(42,167,161,0.95);   /* optional teal accent */
+      --label: rgba(255,255,255,0.78);
+      --label-muted: rgba(255,255,255,0.55);
+    }
+
+    .map { fill: var(--map-fill); stroke: var(--map-stroke); stroke-width: 2; }
+    .mapPattern { fill: url(#diag); opacity: 0.8; }
+
+    .gridLine { stroke: var(--line); stroke-width: 1.4; fill: none; }
+    .gridLineStrong { stroke: var(--line-strong); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-dasharray: 0; }
+
+    .redundant { stroke: rgba(255,255,255,0.28); stroke-width: 2; fill: none; stroke-dasharray: 7 7; stroke-linecap: round; }
+    .backbone { stroke: rgba(255,255,255,0.55); stroke-width: 3; fill: none; stroke-linecap: round; }
+
+    .node { fill: var(--node); }
+    .nodeCore { fill: var(--node-accent); }
+    .nodeEdge { fill: rgba(255,255,255,0.75); }
+    .nodeStroke { stroke: rgba(0,0,0,0.12); stroke-width: 1; }
+
+    .label { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; font-size: 16px; fill: var(--label); }
+    .labelSmall { font-size: 13px; fill: var(--label-muted); }
+    .legendLine { stroke: rgba(255,255,255,0.55); stroke-width: 3; }
+    .legendDash { stroke: rgba(255,255,255,0.30); stroke-width: 2; stroke-dasharray: 7 7; }
+  </style>
+
+  <!-- MAP LAYER -->
+  <g>
+    <!-- Base silhouette -->
+    <use href="#mapSilhouette" class="map"/>
+    <!-- Pattern overlay -->
+    <use href="#mapSilhouette" class="mapPattern"/>
+  </g>
+
+  <!-- GRID / HEX OVERLAY (clipped to map) -->
+  <g clip-path="url(#clipMap)" opacity="0.95">
+    <!-- Hex grid drawn as repeating “zig-zag” rows for a schematic feel -->
+    <!-- Row 1 -->
+    <path class="gridLine" d="M140,220 L210,185 L280,220 L350,185 L420,220 L490,185 L560,220 L630,185 L700,220 L770,185 L840,220 L910,185 L980,220 L1050,185"/>
+    <path class="gridLine" d="M140,260 L210,225 L280,260 L350,225 L420,260 L490,225 L560,260 L630,225 L700,260 L770,225 L840,260 L910,225 L980,260 L1050,225"/>
+    <!-- Row 2 -->
+    <path class="gridLine" d="M170,300 L240,265 L310,300 L380,265 L450,300 L520,265 L590,300 L660,265 L730,300 L800,265 L870,300 L940,265 L1010,300"/>
+    <path class="gridLine" d="M170,340 L240,305 L310,340 L380,305 L450,340 L520,305 L590,340 L660,305 L730,340 L800,305 L870,340 L940,305 L1010,340"/>
+    <!-- Row 3 -->
+    <path class="gridLine" d="M140,380 L210,345 L280,380 L350,345 L420,380 L490,345 L560,380 L630,345 L700,380 L770,345 L840,380 L910,345 L980,380 L1050,345"/>
+
+    <!-- A few stronger grid segments to imply “backbone corridors” -->
+    <path class="gridLineStrong" d="M240,265 L310,300 L380,265 L450,300 L520,265 L590,300 L660,265"/>
+    <path class="gridLineStrong" d="M520,265 L590,300 L660,265 L730,300 L800,265"/>
+    <path class="gridLineStrong" d="M380,305 L450,340 L520,305 L590,340 L660,305 L730,340"/>
+  </g>
+
+  <!-- BACKBONE + REDUNDANT PATHS -->
+  <g filter="url(#glow)">
+    <!-- Backbone trunk (solid) -->
+    <path class="backbone" d="M270,320 C360,295 440,285 520,292 C610,300 680,315 760,305 C840,295 920,285 1000,300"/>
+    <!-- Redundant alternate path (dashed) -->
+    <path class="redundant" d="M300,360 C390,340 470,330 540,338 C620,348 700,365 780,352 C860,340 930,330 980,332"/>
+    <!-- Secondary redundant (dashed) -->
+    <path class="redundant" d="M250,285 C340,265 420,258 500,262 C590,266 660,280 735,275 C820,270 900,258 1040,310"/>
+  </g>
+
+  <!-- NODES -->
+  <g filter="url(#glow)">
+    <!-- Backbone core nodes (bigger, accented) -->
+    <circle class="nodeCore nodeStroke" cx="320" cy="310" r="8"/>
+    <circle class="nodeCore nodeStroke" cx="520" cy="292" r="9"/>
+    <circle class="nodeCore nodeStroke" cx="720" cy="308" r="8"/>
+    <circle class="nodeCore nodeStroke" cx="940" cy="292" r="8"/>
+
+    <!-- Access nodes (smaller, white) -->
+    <circle class="node nodeStroke" cx="250" cy="350" r="5"/>
+    <circle class="node nodeStroke" cx="380" cy="280" r="5"/>
+    <circle class="node nodeStroke" cx="450" cy="340" r="5"/>
+    <circle class="node nodeStroke" cx="600" cy="325" r="5"/>
+    <circle class="node nodeStroke" cx="655" cy="275" r="5"/>
+    <circle class="node nodeStroke" cx="800" cy="350" r="5"/>
+    <circle class="node nodeStroke" cx="860" cy="285" r="5"/>
+    <circle class="node nodeStroke" cx="1010" cy="330" r="5"/>
+
+    <!-- A “teal” special node (optional: e.g., gateway/backhaul) -->
+    <circle class="nodeStroke" cx="585" cy="405" r="7" fill="rgba(42,167,161,0.95)"/>
+  </g>
+
+  <!-- LABELS (minimal, schematic) -->
+  <g>
+    <!-- Label: Backbone Node -->
+    <text class="label" x="560" y="240">Backbone Node</text>
+    <line class="legendLine" x1="520" y1="235" x2="545" y2="235"/>
+    <circle cx="508" cy="235" r="6" fill="rgba(94,167,239,0.95)"/>
+
+    <!-- Label: Redundant Path -->
+    <text class="label" x="560" y="270">Redundant Path</text>
+    <line class="legendDash" x1="505" y1="265" x2="545" y2="265"/>
+
+    <!-- Label: Access Layer -->
+    <text class="label" x="560" y="300">Access Layer</text>
+    <circle cx="508" cy="295" r="4.5" fill="rgba(255,255,255,0.90)"/>
+
+    <text class="labelSmall" x="560" y="325">Illustrative schematic (not to geographic scale)</text>
+  </g>
+
+  <!-- Subtle boundary vignette (helps on busy hero backgrounds) -->
+  <rect x="0" y="0" width="1200" height="560" fill="none" stroke="rgba(255,255,255,0.10)"/>
+</svg>

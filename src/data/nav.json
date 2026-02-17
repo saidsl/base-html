@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Home",
+    "href": "/",
+    "alt": "Homepage"
+  },
+  {
+    "id": 2,
+    "title": "About",
+    "href": "./about.html",
+    "alt": "About Page"
+  },
+  {
+    "id": 3,
+    "title": "Services/Products",
+    "href": "/services.html",
+    "alt": "Services/Products Page"
+  },
+  {
+    "id": 4,
+    "title": "Contact",
+    "href": "./contact.html",
+    "alt": "eu"
+  }
+]

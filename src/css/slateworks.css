@@ -1,0 +1,517 @@
+/*
+  Base HTML - Classless Styles
+  Modernized, variable-driven, component-friendly
+*/
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--line);
+  color: var(--text);
+  background: var(--bg);
+  padding: var(--space-7) var(--page-pad) var(--space-8);
+  max-width: var(--page-width);
+  margin-inline: auto;
+}
+
+main {
+  display: block;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+p {
+  margin: var(--space-3) 0;
+  font-size: var(--step--1);
+}
+
+/* Links */
+a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--accent);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: var(--space-6) 0 var(--space-3);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+h1 {
+  font-size: var(--step-6);
+}
+
+h2 {
+  font-size: var(--step-5);
+}
+
+h3 {
+  font-size: var(--step-4);
+}
+
+h4 {
+  font-size: var(--step-3);
+}
+
+h5 {
+  font-size: var(--step-2);
+}
+
+h6 {
+  font-size: var(--step-1);
+}
+
+/* Lists */
+ul,
+ol,
+dl {
+  margin: var(--space-4) 0;
+  padding-left: 1.5rem;
+}
+
+dt {
+  font-weight: 600;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-4) 0;
+  font-size: var(--text-sm);
+}
+
+th,
+td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+tr:hover td {
+  background: var(--surface);
+}
+
+caption {
+  text-align: left;
+  color: var(--muted);
+  margin-bottom: var(--space-2);
+}
+
+/* Code */
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--surface-2);
+  padding: 0.15em 0.35em;
+  border-radius: var(--radius-1);
+}
+
+pre {
+  background: var(--surface-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-2);
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+pre > code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Blockquote */
+blockquote {
+  margin: var(--space-5) 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 4px solid var(--accent);
+  background: var(--surface);
+  border-radius: var(--radius-1);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--space-6) 0;
+}
+
+/* Forms */
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  margin-block: var(--space-2);
+  border: 1px solid var(--surface-2);
+  border-radius: var(--radius-1);
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Checkbox & Radio Inputs */
+input:where([type="checkbox"], [type="radio"]) {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  vertical-align: top;
+  margin: calc(0.75em - 11px) 0.25rem 0 0;
+  border: 1px solid var(--surface-2);
+  border-radius: 4px;
+  background: var(--accent) no-repeat center center;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+input:where([type="checkbox"], [type="radio"]):where(:active:not(:disabled), :focus) {
+  border-color: var(--surface-2);
+  outline: none;
+}
+
+input:where([type="checkbox"], [type="radio"]):disabled {
+  background: var(--muted);
+}
+
+input[type="checkbox"]:checked {
+  background-image: url('../assets/svg/checkbox.svg');
+}
+
+input[type="radio"]:checked {
+  background-image: url('../assets/svg/radio.svg');
+}
+
+textarea {
+  min-height: 7rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 2px;
+  border-color: var(--muted);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  /* For Chrome, Safari, Edge, Opera */
+  appearance: none;
+  height: 10px;
+  width: 100%;
+  /* Ensure specific width for consistency */
+  background: white;
+  /* Remove default background */
+  outline: none;
+  /* Remove focus outline, consider adding your own for accessibility */
+}
+
+
+/* WebKit browsers (Chrome, Safari, Edge, Opera) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Remove default thumb style */
+  appearance: none;
+  height: 25px;
+  width: 25px;
+  background: var(--fg);
+  /* Custom color */
+  cursor: pointer;
+  border-radius: 50%;
+  /* Make it round */
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: 25px;
+  width: 25px;
+  background: var(--fg);
+  /* Custom color */
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  /* Firefox adds a default border */
+}
+
+/* Internet Explorer 10+ */
+input[type="range"]::-ms-thumb {
+  height: 25px;
+  width: 25px;
+  background: var(--fg);
+  /* Custom color */
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+[role=search],
+[role=group] {
+  display: inline-flex;
+  position: relative;
+  width: 100%;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-2);
+  vertical-align: middle;
+  padding-inline: 0;
+  padding-block: 0;
+
+  & button,
+  input[type="submit"],
+  input[type="email"] {
+    margin-block: 0;
+  }
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-1);
+  border: 1px solid var(--muted);
+  background: var(--fg);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background: color-mix(in srgb, var(--fg), black 20%);
+  border-color: color-mix(in srgb, var(--fg), black 20%);
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2);
+  padding: var(--space-4);
+}
+
+legend {
+  padding: 0 var(--space-2);
+  font-weight: 600;
+}
+
+/* Details / Summary */
+summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2);
+  background: var(--surface-2);
+  padding: var(--space-3) var(--space-4);
+  margin-top: var(--space-3);
+}
+
+details[open] {
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+}
+
+details > * + * {
+  margin-top: var(--space-3);
+}
+
+/* One-class upgrade for details */
+.details-panel {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.details-panel[open] {
+  background: var(--bg);
+}
+
+/* articles (Cards) */
+.card {
+  background: color-mix(in oklab, var(--bg) 60%, white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2);
+  padding: var(--space-4);
+  box-shadow: color-mix(in oklab, var(--bg) 10%, black);
+}
+
+/* Nav */
+nav {
+  background: var(--surface);
+  /* border: 1px solid var(--border); */
+  border-radius: var(--radius-2);
+  padding: var(--space-3) var(--space-4);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.col-1 {
+  grid-column: span 1;
+}
+
+.col-2 {
+  grid-column: span 2;
+}
+
+.col-3 {
+  grid-column: span 3;
+}
+
+.col-4 {
+  grid-column: span 4;
+}
+
+.col-5 {
+  grid-column: span 5;
+}
+
+.col-6 {
+  grid-column: span 6;
+}
+
+.col-7 {
+  grid-column: span 7;
+}
+
+.col-8 {
+  grid-column: span 8;
+}
+
+.col-9 {
+  grid-column: span 9;
+}
+
+.col-10 {
+  grid-column: span 10;
+}
+
+.col-11 {
+  grid-column: span 11;
+}
+
+.col-12 {
+  grid-column: span 12;
+}
+
+.grid-auto {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+}
+
+/* Text utilities */
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Color utilities */
+.text-primary {
+  color: var(--accent);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* Print */
+@media print {
+  body {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  nav,
+  .noprint {
+    display: none;
+  }
+}
