@@ -1,3 +1,7 @@
-# Bootstrap w/ Vite
+# Classless HTML
 
-Include [Bootstrap](https://getbootstrap.com)'s source Sass and individual JavaScript plugins with [Vite](https://vitejs.dev/).
+Base HTML using:
+
+- VueJS
+- Vite
+- Custom CSS
